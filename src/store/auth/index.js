@@ -1,6 +1,7 @@
 import { LOGIN } from "./action-types"
 
 const initialState = {
+  loggedIn: false,
   accessToken: ""
 }
 
@@ -9,7 +10,8 @@ export default (state = initialState, action) => {
     case LOGIN:
       return {
         ...state,
-        accessToken: ""
+        loggedIn: true,
+        accessToken: "AT"
       }
     default:
       return state
