@@ -1,16 +1,18 @@
 import React, { useState } from "react"
-import { connect } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import Button from "../components/common/Button"
 import CenteredFullContainer from "../components/common/CenteredFullContainer"
 import InputText from "../components/common/InputText"
 import { login } from "../store/auth/actions"
 
-const Login = ({ login, loggedIn }) => {
+const Login = props => {
+  const dispatch = useDispatch()
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
+  const loggedIn = useSelector(state => state.auth.loggedIn)
   const setUsernameInput = e => setUsername(e.target.value)
   const setPasswordInput = e => setPassword(e.target.value)
-  const submit = () => login({ username, password })
+  const dispatchLogin = () => dispatch(login({ username, password }))
 
   console.log(loggedIn)
 
@@ -29,7 +31,7 @@ const Login = ({ login, loggedIn }) => {
         onChange={setPasswordInput}
         value={password}
       />
-      <Button onClick={submit}>Submit</Button>
+      <Button onClick={dispatchLogin}>Submit</Button>
     </CenteredFullContainer>
   )
 }
@@ -40,7 +42,4 @@ const mapDispatchToProps = dispatch => ({
   login: credentials => dispatch(login(credentials))
 })
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Login)
+export default Login
