@@ -6,7 +6,7 @@ export function* login({ payload: { username, password } }) {
       fetch,
       `${process.env.REACT_APP_SERVER_URL}/auth`
     )
-    const { accessToken } = response.json()
+    const { accessToken } = yield call([response, "json"])
     yield put({ type: "LOGIN_SUCCESS", payload: { accessToken } })
   } catch (err) {
     console.log("== LOGIN_FAILED ==")
