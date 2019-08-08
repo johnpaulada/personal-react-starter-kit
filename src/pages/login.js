@@ -36,10 +36,4 @@ const Login = props => {
   )
 }
 
-const mapStateToProps = ({ auth: { loggedIn } }) => ({ loggedIn })
-
-const mapDispatchToProps = dispatch => ({
-  login: credentials => dispatch(login(credentials))
-})
-
 export default Login

@@ -1,6 +1,10 @@
-import { takeEvery } from "redux-saga/effects"
+import { all, takeEvery } from "redux-saga/effects"
 import { login } from "./auth"
 
-export default function* rootSaga() {
+function* loginWatcher() {
   yield takeEvery("LOGIN", login)
+}
+
+export default function* rootSaga() {
+  yield all([loginWatcher()])
 }

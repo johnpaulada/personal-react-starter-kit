@@ -1,8 +1,8 @@
-import { LOGIN, LOGIN_SUCCESS } from "./action-types"
+import { LOGIN, LOGIN_FAILED, LOGIN_SUCCESS } from "./action-types"
 
 const initialState = {
   loggedIn: false,
-  accessToken: ""
+  accessToken: null
 }
 
 export default (state = initialState, action) => {
@@ -14,6 +14,12 @@ export default (state = initialState, action) => {
         ...state,
         loggedIn: true,
         accessToken: action.payload.accessToken
+      }
+    case LOGIN_FAILED:
+      return {
+        ...state,
+        loggedIn: false,
+        accessToken: null
       }
     default:
       return state
