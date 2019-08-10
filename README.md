@@ -1,6 +1,6 @@
 # Personal React Starter Kit
 
-A template for me to start working on my
+A template for me to start working on my frontend stuff.
 
 ## Stack
 
