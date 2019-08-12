@@ -1,9 +1,7 @@
-// TODO: Implement
 export const isInStorage = key => async () => {
-  return false
+  return (await localStorage.getItem(key)) !== null
 }
 
-// TODO: Implement
 export const getFromStorage = key => async () => {
-  return null
+  return await localStorage.getItem(key)
 }
